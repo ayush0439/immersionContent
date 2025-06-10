@@ -1,0 +1,61 @@
+import React, { useState } from "react";
+
+export default function App() {
+  const [bars, setBars] = useState([]);
+
+  const addProgressBar = () => {
+    setBars([...bars, Date.now()]); // Add a unique ID
+  };
+
+  return (
+    <div style={{ padding: "20px" }}>
+      <button onClick={addProgressBar}>Add</button>
+
+      {bars.map((id) => (
+        <ProgressBar key={id} />
+      ))}
+    </div>
+  );
+}
+
+function ProgressBar() {
+  const [width, setWidth] = useState(0);
+
+  React.useEffect(() => {
+    let start = Date.now();
+    const duration = 2000;
+
+    const timer = setInterval(() => {
+      const progress = Math.min(((Date.now() - start) / duration) * 100, 100);
+      setWidth(progress);
+
+      if (progress === 100) {
+        clearInterval(timer);
+      }
+    }, 20); // update every 20ms
+
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <div
+      style={{
+        width: "100%",
+        backgroundColor: "#ddd",
+        height: "20px",
+        borderRadius: "5px",
+        marginTop: "10px",
+        overflow: "hidden",
+      }}
+    >
+      <div
+        style={{
+          height: "100%",
+          width: `${width}%`,
+          backgroundColor: "#3498db",
+          transition: "width 0.02s linear",
+        }}
+      ></div>
+    </div>
+  );
+}
