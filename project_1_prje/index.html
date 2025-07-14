@@ -1,30 +1,180 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Product Search</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Auction Hub</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <header>
+      <div class="container navbar">
+        <a href="#" class="logo">
+          <img src="./images/logo.jpg" alt="Auction Hub Logo" />
+        </a>
+        <nav>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="./pages/all_listings.html">All Listings</a></li>
+            <li><a href="./pages/categories.html">Categories</a></li>
+            <li><a href="./pages/working.html">How It Works</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </nav>
+        <div class="auth-cta">
+          <a href="pages/login_signup.html" class="login-btn">Login / Sign Up</a>
+          <button class="cta-btn">Start Bidding</button>
+        </div>
+      </div>
+    </header>
 
-  <h2>Search for Products</h2>
+    <main>
+      <section class="hero">
+        <div class="container">
+          <div class="hero-content">
+            <h1>Your Marketplace for Competitive Buying and Selling</h1>
+            <p>
+              Discover a world of exciting auctions across various categories.
+            </p>
+            <div class="search-bar">
+              <input type="text" placeholder="Search for auctions..." />
+              <button type="submit">Search</button>
+            </div>
+          </div>
+          <!-- <div class="hero-image">
+                    <img src="hero-banner.jpg" alt="Auction Hero Banner">
+                </div> -->
+        </div>
+      </section>
 
-  <input type="text" id="searchInput" placeholder="Enter product name">
-  <button onclick="searchProduct()">Search</button>
+      <section class="featured-auctions">
+        <div class="container">
+          <h2>Trending Auctions</h2>
+          <div class="auction-list">
+            <div class="auction-item">
+              <img src="images/audi.png" alt="Auction Item 1" />
+              <h3>AUDI</h3>
+              <p>Starting Bid: $100000</p>
+              <p class="countdown">Ends in: <span>00:01:30</span></p>
+              <button class="details-btn">View Details</button>
+            </div>
+            <div class="auction-item">
+              <img src="images/iphone 15.png" alt="Auction Item 2" />
+              <h3>iphone 15</h3>
+              <p>Starting Bid: $1500</p>
+              <p class="countdown">Ends in: <span>00:01:00</span></p>
+              <button class="details-btn">View Details</button>
+            </div>
+            <div class="auction-item">
+              <img src="images/lava.png" alt="Auction Item 3" />
+              <h3>LAVA</h3>
+              <p>Starting Bid: $100</p>
+              <p class="countdown">Ends in: <span>00:01:00</span></p>
+              <button class="details-btn">View Details</button>
+            </div>
+          </div>
+        </div>
+      </section>
 
-  <!-- 🔽 Add this dropdown below the search button -->
-  <select id="sortSelect" onchange="sortProducts()">
-    <option value="">Sort By</option>
-    <option value="price-asc">Price: Low to High</option>
-    <option value="price-desc">Price: High to Low</option>
-    <option value="rating-asc">Rating: Low to High</option>
-    <option value="rating-desc">Rating: High to Low</option>
-  </select>
+      <section class="how-it-works">
+        <div class="container">
+          <h2>How It Works</h2>
+          <div class="steps">
+            <div class="step">
+              <h3>1. Register an Account</h3>
+              <p>Sign up to start bidding on your favorite items.</p>
+            </div>
+            <div class="step">
+              <h3>2. Browse Items</h3>
+              <p>Explore various categories and find what you love.</p>
+            </div>
+            <div class="step">
+              <h3>3. Place Bids</h3>
+              <p>Bid in real-time or set automatic bids to win.</p>
+            </div>
+            <div class="step">
+              <h3>4. Win & Pay Securely</h3>
+              <p>Complete your purchase with secure payment options.</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-  <p class="error" id="errorMsg"></p>
+      <section class="categories">
+        <div class="container">
+          <h2>Categories</h2>
+          <div class="category-list">
+            <div class="category">Electronics</div>
+            <div class="category">Art</div>
+            <div class="category">Vehicles</div>
+            <div class="category">Real Estate</div>
+            <div class="category">Collectibles</div>
+          </div>
+        </div>
+      </section>
 
-  <div class="product-container" id="productResults"></div>
+      <section class="testimonials">
+        <div class="container">
+          <h2>User Testimonials</h2>
+          <div class="testimonial">
+            <p>“Sold my vintage car in just two days!”</p>
+            <span>- Happy User</span>
+          </div>
+          <div class="stats">
+            <p>10,000+ successful auctions</p>
+            <p>5-star reviews</p>
+          </div>
+        </div>
+      </section>
+    </main>
 
-  <script src="script.js"></script>
-</body>
+    <footer>
+      <div class="container">
+        <div class="footer-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms & Conditions</a>
+          <a href="#">Follow us on Social Media</a>
+        </div>
+        <div class="newsletter">
+          <h3>Subscribe to our Newsletter</h3>
+          <input type="email" placeholder="Enter your email" />
+          <button type="submit">Subscribe</button>
+        </div>
+        <p>Secure Payments with trusted gateways.</p>
+      </div>
+    </footer>
+
+    <script>
+      const countdownElements = document.querySelectorAll('.countdown span');
+
+      countdownElements.forEach((element) => {
+          let timeLeft = parseTime(element.innerText); 
+          const interval = setInterval(() => {
+              if (timeLeft <= 0) {
+                  clearInterval(interval);
+                  element.innerText = "Auction Ended";
+              } else {
+                  timeLeft--;
+                  element.innerText = formatTime(timeLeft);
+              }
+          }, 1000);
+      });
+
+      function parseTime(timeString) {
+          const parts = timeString.split(':');
+          return (+parts[0]) * 3600 + (+parts[1]) * 60 + (+parts[2]);
+      }
+
+      function formatTime(seconds) {
+          const hours = Math.floor(seconds / 3600);
+          const minutes = Math.floor((seconds % 3600) / 60);
+          const secs = seconds % 60;
+          return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+      }
+    </script>
+  </body>
 </html>
